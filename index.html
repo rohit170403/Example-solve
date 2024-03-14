@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungarian Algorithm Solver</title>
+    <style>
+        /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.result {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center horizontally */
+    max-width: 600px; /* Adjust as needed */
+}
+
+.assignment {
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2>Hungarian Algorithm Solver</h2>
+    <form method="post">
+        <p>Enter the cost matrix (separated by spaces or newlines):</p>
+        <textarea name="cost_matrix" rows="4" cols="50">{{ request.form.cost_matrix }}</textarea><br><br>
+        <input type="submit" value="Solve">
+    </form>
+
+    {% if assignment is not none %}
+        <h2>Optimal Assignment:</h2>
+        {% for row, col in assignment %}
+            <p>Row {{ row + 1 }} -> Column {{ col + 1 }} (Cost: {{ cost_matrix[row][col] }})</p>
+        {% endfor %}
+        <p>Total Cost: {{ total_cost }}</p>
+    {% endif %}
+</div>
+</body>
+</html>
